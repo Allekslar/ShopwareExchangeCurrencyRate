@@ -1,0 +1,43 @@
+{% set config = element.fieldConfig.elements %}
+{% set baseCurrency = element.data.getExtension("baseCurrency") %}
+
+{% block element_currency_rate %}
+	<div class="{{config.titleTextAlign.value}} cms-element-{{ element.type }}">
+		<h3>Currency rate</h3>
+		<div class="d-flex justify-content-between">
+			<table class="table table-striped {{config.textAlign.value}}">
+				<thead>
+					<tr>
+						<th>{{ 'aleks-wsdev.element.currency-rate.code' | trans }}</th>
+						<th>{{ 'aleks-wsdev.element.currency-rate.buy' | trans }}</th>
+						<th>{{ 'aleks-wsdev.element.currency-rate.sell' | trans }}</th>
+						<th>{{ 'aleks-wsdev.element.currency-rate.date' | trans }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for class in element.data %}
+						<tr>
+							<td>{{class.code}}</td>
+							<td>
+								{% if class.rateBuy %}
+								{{baseCurrency["symbol"]}}{{ class.rateBuy|number_format(2, '.') }}
+								{%  else %}
+									{{baseCurrency["symbol"]}}{{ class.rateCross|number_format(2, '.') }}
+								{%  endif %}
+							</td>
+							<td>
+								{% if class.rateSell %}
+									{{baseCurrency["symbol"]}}{{ class.rateSell|number_format(2, '.') }}
+								{%  else %}
+									{{baseCurrency["symbol"]}}{{ class.rateCross|number_format(2, '.') }}
+								{%  endif %}
+							</td>
+							<td>{{class.date|date("m/d/Y")}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

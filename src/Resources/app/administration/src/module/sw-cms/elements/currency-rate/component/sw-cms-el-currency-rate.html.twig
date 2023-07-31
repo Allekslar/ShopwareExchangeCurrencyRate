@@ -1,0 +1,11 @@
+{% block sw_cms_element_currency_rate %}
+	<div class="currency-rate">
+		<div :class="['currency-rate-wrapper']">
+
+			<img v-if="element.config.thumbnailurl.value" :src="element.config.thumbnailurl.value">
+			<img v-else :src="'/obtainingexchangecurrencyrate/static/img/cms/cr.jpg' | asset">
+		</div>
+
+
+	</div>
+{% endblock %}

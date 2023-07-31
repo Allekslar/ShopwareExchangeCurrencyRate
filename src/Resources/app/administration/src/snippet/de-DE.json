@@ -1,0 +1,33 @@
+{
+    "aleks-wsdev": {
+        "blocks": {
+            "currency-rate": {
+                "label": "Currency Rate"
+            }
+        }
+    },
+    "sw-cms": {
+        "component": {
+            "sw-cms-sidebar": {
+                "aleks-wsdev": "AlexWsDev"
+            }
+        },
+        "elements": {
+            "config": {
+                "label": {
+                    "textAlign": "TextAlign",
+                    "titleTextAlign": "TitleTextAlign",
+                    "textLeft": "TextLeft",
+                    "textCenter": "TextCenter",
+                    "textRight": "TextRight"
+                }
+            }
+        }
+    },
+    "sw-extension-override": {
+        "error": {
+            "failedSave": "Failed to save"
+ 
+        } 
+    }
+}

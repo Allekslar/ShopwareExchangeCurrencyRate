@@ -1,0 +1,4 @@
+{% block block_currency_rate %}
+    {% set element = block.slots.getSlot('content') %}
+    	{% sw_include "@Storefront/storefront/element/cms-element-currency-rate.html.twig" %}
+{% endblock %}

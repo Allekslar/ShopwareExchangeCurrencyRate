@@ -1,0 +1,13 @@
+.sw-cms-preview-currency-rate {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+
+    &__img {
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "aleks-wsdev": {
+        "element": {
+            "currency-rate": {
+                "currency": "Currency",
+                "code": "Code",
+                "buy": "Buy",
+                "sell": "Sell"
+            }
+        }
+    }
+}

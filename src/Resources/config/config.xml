@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>#ObtainingExchangeCurrencyRate# Settings</title>
+        <title lang="de-DE">#ObtainingExchangeCurrencyRate# Einstellungen</title>
+        <input-field type="int">
+            <name>interval</name>
+            <label>Interval updates </label>
+            <label lang="de-DE">Intervallaktualisierungen</label>
+            <placeholder>In seconds</placeholder>
+            <placeholder lang="de-DE">In Sekunden</placeholder>
+            <helpText>Specify the number of seconds to wait until the next exchange rate is received (Information through the monobank API is cached and updated no more than 1 time in 5 minutes.).
+            </helpText>
+            <helpText lang="de-DE">Geben Sie die Anzahl der Sekunden an, die gewartet werden soll, bis der nächste Wechselkurs empfangen wird (Informationen über die Monobank-API werden zwischengespeichert und maximal alle 5 Minuten aktualisiert.).
+            </helpText>
+            <defaultValue>300</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>endpoint</name>
+            <label>Endpoint from </label>
+            <label lang="de-DE">Endpunkt</label>
+            <defaultValue>"https://api.monobank.ua/bank/currency"</defaultValue>
+        </input-field>
+
+        <input-field type="multi-select">
+            <name>currencyCode</name>
+            <label>Currency code</label>
+            <label lang="de-DE">Währungscode</label>
+            <options>
+                <option>
+                    <id>840</id>
+                    <name>US Dollar</name>
+                    <name lang="de-DE">US Dollar</name>
+                </option>
+                <option>
+                    <id>978</id>
+                    <name>Euro</name>
+                    <name lang="de-DE">Euro</name>
+                </option>
+                <option>
+                    <id>108</id>
+                    <name>Burundi Franc</name>
+                    <name lang="de-DE">Burundi-Franc</name>
+                </option>
+                <option>
+                    <id>986</id>
+                    <name>Brazilian Real</name>
+                    <name lang="de-DE">Brasilianischer Real</name>
+                </option>
+            </options>
+        </input-field> 
+    </card>
+</config>

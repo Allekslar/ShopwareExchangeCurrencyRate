@@ -1,0 +1,28 @@
+{% block sw_cms_el_config_colorstage %}
+	<div class="sw-cms-el-config-currency-rate">
+
+		{% block sw_cms_el_text_config_content %}
+
+			<sw-text-field :label="$tc('currency-rate.thumbnailurl')" v-model="element.config.thumbnailurl.value"></sw-text-field>
+
+			<div class="sw-cms-el-config-currency-rate-text-align">
+
+				<sw-select-field :label="$tc('sw-cms.elements.config.label.textAlign')" v-model="element.config.textAlign.value" :placeholder="$tc('sw-cms.elements.config.label.textAlign')">
+					<option value="text-start">{{ $tc('sw-cms.elements.config.label.textLeft') }}</option>
+					<option value="text-center">{{ $tc('sw-cms.elements.config.label.textCenter') }}</option>
+					<option value="text-end">{{ $tc('sw-cms.elements.config.label.textRight') }}</option>
+				</sw-select-field>
+			</div>
+
+			<div class="sw-cms-el-config-currency-rate-title-text-align">
+
+				<sw-select-field :label="$tc('sw-cms.elements.config.label.titleTextAlign')" v-model="element.config.titleTextAlign.value" :placeholder="$tc('sw-cms.elements.config.label.titleTextAlign')">
+					<option value="text-start">{{ $tc('sw-cms.elements.config.label.textLeft') }}</option>
+					<option value="text-center">{{ $tc('sw-cms.elements.config.label.textCenter') }}</option>
+					<option value="text-end">{{ $tc('sw-cms.elements.config.label.textRight') }}</option>
+				</sw-select-field>
+			</div>
+
+		{% endblock %}
+	</div>
+{% endblock %}

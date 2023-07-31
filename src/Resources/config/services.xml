@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\Components\Monobank\CurrencyRateDefinition">
+            <tag name="shopware.entity.definition" entity="aleks_currency_rate" />
+        </service>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\ApiCurrencyRateService" public="true">
+            <argument type="service" id="aleks_currency_rate.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Administration\Notification\NotificationService"/>
+        </service>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\CurrencyRateService" public="true">
+            <argument type="service" id="aleks_currency_rate.repository"/>
+            <argument type="service" id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\ApiCurrencyRateService"/>
+            <argument type="service" id="currency_rate_cache"/>
+        </service>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\Subscriber\SystemConfigSubscriber">
+            <argument type="service" id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\CurrencyRateService"/>
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\ScheduledTask\CurrencyRateTask">
+            <tag name="shopware.scheduled.task" />
+        </service>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\ScheduledTask\CurrencyRateTaskHandler">
+            <argument type="service" id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\CurrencyRateService"/>
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="messenger.message_handler" />
+        </service>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\DataResolver\CurrencyRateCmsElementResolver">
+            <argument type="service" id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\CurrencyRateService"/>
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+        <service id="AleksWsdev\ObtainingExchangeCurrencyRate\Administration\ConfigController" public="true">
+            <argument type="service" id="AleksWsdev\ObtainingExchangeCurrencyRate\Service\ApiCurrencyRateService"/>
+        </service>
+        <service id="currency_rate_cache" class="Symfony\Component\Cache\Adapter\FilesystemAdapter">
+            <argument>currency_rate_cache</argument>
+            <argument>3600</argument>
+        </service>
+    </services>
+</container>
